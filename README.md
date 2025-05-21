@@ -45,7 +45,7 @@ This Cloudflare Worker filters incoming requests based on a dynamic set of rules
         - The `FILTER_RULES_KV` binding is already defined. You need to ensure the `id` in `wrangler.jsonc` matches your KV namespace ID.
         - If you don't have a KV namespace yet, create one:
           ```bash
-          npx wrangler kv:namespace create FILTER_RULES_KV
+          npx wrangler kv namespace create FILTER_RULES_KV
           ```
         - Copy the `id` from the output and paste it into the `id` field for `FILTER_RULES_KV` in `wrangler.jsonc`.
     - **`analytics_engine_datasets`**:
@@ -85,7 +85,7 @@ This Cloudflare Worker filters incoming requests based on a dynamic set of rules
             ```bash
             # Ensure CLOUDFLARE_API_TOKEN is set if you encounter auth issues
             # export CLOUDFLARE_API_TOKEN="your_api_token_here" 
-            npx wrangler kv:key put --namespace-id="<YOUR_KV_NAMESPACE_ID_HERE>" "FILTERING_RULES" --path="./rules.json"
+            npx wrangler kv key put --namespace-id="<YOUR_KV_NAMESPACE_ID_HERE>" "FILTERING_RULES" --path="./rules.json"
             ```
             If you get an authentication error (like "PUT method not allowed for the oauth_token authentication scheme"), you may need to create and use a Cloudflare API Token with `Workers KV Storage:Edit` permissions. Set it as an environment variable `CLOUDFLARE_API_TOKEN` before running the command.
 
@@ -269,6 +269,6 @@ This will start a local server, typically at `http://localhost:8787`. You will n
 
 For KV, you can create a local KV namespace for testing:
 ```bash
-npx wrangler kv:namespace create FILTER_RULES_KV --preview
+npx wrangler kv namespace create FILTER_RULES_KV --preview
 ```
 And then add its `preview_id` to `wrangler.jsonc` under a `[env.dev.kv_namespaces]` section or similar for local testing.
