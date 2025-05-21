@@ -1,0 +1,90 @@
+[
+  {
+    "id": "block-specific-user-agent",
+    "description": "Block requests from 'LegacyBot/1.0'",
+    "target": "header",
+    "property": "User-Agent",
+    "condition": "equals",
+    "value": "LegacyBot/1.0",
+    "action": "block"
+  },
+  {
+    "id": "block-admin-access-path",
+    "description": "Block external access to '/admin' or '/_admin' paths",
+    "target": "url",
+    "property": "pathname",
+    "condition": "startsWith",
+    "value": "/admin",
+    "action": "block"
+  },
+  {
+    "id": "block-debug-query-param",
+    "description": "Block requests containing '?debug_mode=true'",
+    "target": "url",
+    "property": "search",
+    "condition": "contains",
+    "value": "debug_mode=true",
+    "action": "block"
+  },
+  {
+    "id": "block-php-extension",
+    "description": "Block requests for '.php' files",
+    "target": "url",
+    "property": "pathname",
+    "condition": "endsWith",
+    "value": ".php",
+    "action": "block"
+  },
+  {
+    "id": "block-if-x-exploit-header-exists",
+    "description": "Block if 'X-Exploit-Attempt' header is present",
+    "target": "header",
+    "property": "X-Exploit-Attempt",
+    "condition": "exists",
+    "action": "block"
+  },
+  {
+    "id": "block-post-to-login",
+    "description": "Block POST requests to '/login.php'",
+    "target": "url",
+    "property": "pathname",
+    "condition": "equals",
+    "value": "/login.php",
+    "action": "block"
+  },
+  {
+    "id": "block-specific-host",
+    "description": "Block requests to 'old.example.com'",
+    "target": "url",
+    "property": "host",
+    "condition": "equals",
+    "value": "old.example.com",
+    "action": "block"
+  },
+  {
+    "id": "block-empty-user-agent",
+    "description": "Block requests with an empty User-Agent header",
+    "target": "header",
+    "property": "User-Agent",
+    "condition": "equals",
+    "value": "",
+    "action": "block"
+  },
+  {
+    "id": "block-trace-method",
+    "description": "Block TRACE HTTP method",
+    "target": "method",
+    "condition": "equals",
+    "value": "TRACE",
+    "action": "block"
+  },
+  {
+    "id": "block-suspicious-query-string",
+    "description": "Block requests with 'eval(' in query string",
+    "target": "url",
+    "property": "search",
+    "condition": "contains",
+    "value": "eval(",
+    "action": "block"
+  }
+]
